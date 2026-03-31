@@ -6,11 +6,15 @@
 
     <title>{{ $title ?? 'Stop Arnaque 974 - Prévention et Accompagnement Numérique à la Réunion' }}</title>
     <meta name="description" content="{{ $description ?? 'Plateforme citoyenne de recensement des arnaques à la Réunion. Découvrez également nos ateliers d\'accompagnement au numérique pour seniors et enfants.' }}">
+    <link rel="canonical" href="{{ url()->current() }}">
 
     <meta property="og:title" content="{{ $title ?? 'Stop Arnaque 974 - Prévention & Numérique' }}" />
     <meta property="og:description" content="{{ $description ?? 'Ensemble contre les arnaques à la Réunion. Informez-vous et découvrez nos ateliers numériques.' }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ url()->current() }}" />
+
+    <meta property="og:image" content="{{ $ogImage ?? asset('images/stop-arnaque974-img-default.png') }}" />
+    <meta property="og:locale" content="fr_FR" />
 
     <link rel="icon" type="image/png" href="{{ asset('favicon-96x96.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('favicon-96x96.png') }}">

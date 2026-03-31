@@ -19,26 +19,38 @@
                 <div class="md:col-span-2 space-y-6">
                     <div>
                         <h3 class="font-bold text-lg mb-2">Que s'est-il passé ?</h3>
-                        <div class="prose text-gray-700 whitespace-pre-wrap leading-relaxed">
+                        <div class="prose text-gray-700 leading-relaxed">
                             {{ $scam->description }}
                         </div>
                     </div>
 
-                    @if($scam->evidence_paths && count($scam->evidence_paths) > 0)
-                        <div>
-                            <h3 class="font-bold text-lg mb-4">Preuves / Captures d'écran</h3>
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg mb-4">Preuves / Captures d'écran</h3>
+
+                        @php
+                            // C'est cette ligne qui fabrique la variable $preuves manquante !
+                            $preuves = is_string($scam->evidence_paths) ? json_decode($scam->evidence_paths, true) : $scam->evidence_paths;
+                        @endphp
+
+                        @if(!empty($preuves) && is_array($preuves) && count($preuves) > 0)
                             <div class="grid grid-cols-2 gap-4">
-                                @foreach($scam->evidence_paths as $path)
-                                    <a href="{{ asset('storage/' . $path) }}" target="_blank" class="block group relative overflow-hidden rounded-lg border">
-                                        <img src="{{ asset('storage/' . $path) }}" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+                                @foreach($preuves as $path)
+                                    <a href="{{ Storage::url($path) }}" target="_blank" class="block group relative overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+                                        <img src="{{ Storage::url($path) }}" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
                                         <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
                                             <span class="text-white text-sm font-bold">Voir en grand 🔍</span>
                                         </div>
                                     </a>
                                 @endforeach
                             </div>
-                        </div>
-                    @endif
+                        @else
+                            <div class="block relative overflow-hidden rounded-lg border border-gray-100 bg-slate-100 md:w-2/3 shadow-sm">
+                                <img src="{{ asset('images/stop-arnaque974-img-default.png') }}" class="w-full h-48 object-cover opacity-60 hover:scale-105 transition duration-300">
+                                <div class="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm text-slate-600 text-xs px-3 py-1.5 rounded font-medium shadow-sm">
+                                    Aucune capture d'écran fournie
+                                </div>
+                            </div>
+                        @endif
                 </div>
 
                 <div class="space-y-6">
