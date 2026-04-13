@@ -26,6 +26,8 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->brandLogo(asset('images/logo-stop-arnaque.png')) // <-- Ajoutez cette ligne ici
+            ->brandLogoHeight('3rem') // Optionnel : pour ajuster la hauteur
             ->login()
             ->colors([
                 'primary' => Color::Amber,

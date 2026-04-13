@@ -16,7 +16,7 @@
     <meta property="og:image" content="{{ $ogImage ?? asset('images/stop-arnaque974-img-default.png') }}" />
     <meta property="og:locale" content="fr_FR" />
 
-    <link rel="icon" type="image/png" href="{{ asset('favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon-logo-stoparnaque974.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('favicon-96x96.png') }}">
     <meta name="theme-color" content="#ffffff">
 
@@ -46,13 +46,8 @@
         <div class="flex justify-between items-center h-20">
 
             <div class="flex items-center">
-                <a href="{{ route('home') }}" class="group">
-                    <div class="text-2xl font-extrabold tracking-tight leading-none">
-                        <span class="text-red-600">Stop</span>Arnaque<span class="text-slate-900">974</span>
-                    </div>
-                    <div class="text-[10px] uppercase font-bold text-gray-500 tracking-widest group-hover:text-red-600 transition">
-                        Vigilance Océan Indien
-                    </div>
+               <a href="{{ route('home') }}">
+                    <img src="{{ asset('images/logo-stop-arnaque.png') }}" alt="Logo Stop Arnaque 974" class="h-16 w-auto">
                 </a>
             </div>
 
@@ -130,7 +125,9 @@
         <div class="max-w-6xl mx-auto px-4 py-10">
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="col-span-1 md:col-span-2">
-                    <div class="text-xl font-bold text-slate-900 mb-4">StopArnaque<span class="text-red-600">974</span></div>
+                    <a href="{{ route('home') }}">
+                       <img src="{{ asset('images/logo-stop-arnaque.png') }}" alt="Logo Stop Arnaque 974" class="h-16 w-auto">
+                    </a>
                     <p class="text-gray-500 text-sm leading-relaxed mb-4">
                         Une plateforme citoyenne gratuite pour lutter contre la cybercriminalité à la Réunion.<br><br>
                         Ce service solidaire est propulsé par <strong>Kartié-Connect</strong>, votre partenaire local pour l'accompagnement et les ateliers numériques.
@@ -161,7 +158,7 @@
             </div>
 
             <div class="border-t border-gray-100 mt-10 pt-6 text-center text-xs text-gray-400">
-                &copy; {{ date('Y') }} Stop-Arnaque974, un service gratuit proposé par <strong>Kartié-Connect</strong>. Tous droits réservés. <br>
+                &copy; {{ date('Y') }} StopArnaque974, un service gratuit proposé par <strong>Kartié-Connect</strong>. Tous droits réservés. <br>
                 Développé avec ❤️ à la Réunion.
             </div>
         </div>
